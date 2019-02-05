@@ -5,11 +5,12 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const passport = require('passport');
 
 const path = require('path');
 
 const setupPassport = require('./config/setuppassport');
-const routes = require('./controllers/route');
+const routes = require('./controllers/index');
 const {mongoose} = require('./db/mongoose');
 
 const port = process.env.PORT || 3000;
@@ -27,12 +28,15 @@ app.use( bodyParser.urlencoded({
     extended: false
 }) );
 app.use( cookieParser() );
-app.use( session( {
+app.use( session({
     secret: 'TKRv0IJs=HYqrvagQ#&!F!%V]Ww/4KiVs$s,<<MX',
     resave: true,
     saveUninitialized: true
 }) );
 app.use( flash() );
+
+app.use( passport.initialize() );
+app.use( passport.session() );
 
 app.use(routes);
 

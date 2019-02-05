@@ -32,12 +32,11 @@ passport.use('login', new LocalStrategy((username, password, done) => {
                 });
             }
 
-        })
+        });
     });
 }));
 
 module.exports = () => {
-
     passport.serializeUser((user, done) => {
         done(null, user._id);
     });

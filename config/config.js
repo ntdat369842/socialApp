@@ -7,7 +7,7 @@ if (env == 'development') {
 } else if (env == 'test') {
     process.env.PORT = 3000;
     process.env.MONGOLAB_URI = 'mongodb://localhost:27017/socialAppTest';
-} else if (env = 'production') {
+} else {
     process.env.PORT = 3000;
     process.env.MONGOLAB_URI = 'mongodb://sazerac1:sazerac1248@ds113375.mlab.com:13375/mongo-data';
 }
